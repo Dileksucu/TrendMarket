@@ -1,0 +1,40 @@
+﻿@using TrendMarket.Entity;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewData["Title"] = "User Login Page";
+    var count = 0;
+}
+
+  @model List<User>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">İsim Soyisim</th>
+            <th scope="col">Email</th>
+            <th scope="col">Kullanıcı Tipi</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            var fullName = $"";
+            count++;
+            <tr>
+                <th scope="row">@count</th>
+                <td>@fullName</td>
+                <td>@item.Email</td>
+                <td>@item.AccountType.ToString()</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
