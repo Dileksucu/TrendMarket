@@ -1,0 +1,29 @@
+﻿@addTagHelper* , Micrsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper* , TrendMarket.MVC.Controllers
+
+@model TrendMarket.Entity.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* @model sayfanın modelını kullanabiliriz *@
+
+<!--<form asp-action="CreateProduct" asp-controller="Product" method="post">
+    <input type="text" name="Name" placeholder="Product Name" />
+    <br />
+    <input type="number" name="Quantity" placeholder="Quantity" />
+    <br />
+    <button>Product Add </button>-->
+    @*Name değerleri propertyler ile aynı olması gerekir yoksa product parametresiyle eşleşmez*@
+<!--</form>-->
+
+<body>
+    <form asp-action="CreateProduct" asp-controller="Product" method="post">
+        <p>Id:<input asp- for="Id" type="text" /></p> <br />
+        <p>Name:<input asp- for="Name" type="text" /></p> <br />
+        <p>Quantity:<input asp- for="Quantity" type="text" /></p> <br />
+        <button>Send</button>
+        @*burada input oluşturduk, giriş yapabilmek için; inputları nameler ile ayrıyoruz karışmaması için *@
+    </form>
+</body>

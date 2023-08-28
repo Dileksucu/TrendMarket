@@ -30,7 +30,7 @@ namespace TrendMarket.DataAccess.Context
         public TrendMarketDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<TrendMarketDbContext>();
-            optionsBuilder.UseSqlServer("Data Source=LAPTOP-1RUKRP01\\SQLEXPRESS01;Initial Catalog=TrendMarketDb;Integrated Security=SSPI;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Data Source=localhost,1433;Initial Catalog=TrendMarketDb;User id=sa;Password=Pass123!;MultipleActiveResultSets=True;TrustServerCertificate=True;");
 
             return new TrendMarketDbContext(optionsBuilder.Options);
         }

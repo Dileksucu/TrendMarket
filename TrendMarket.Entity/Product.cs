@@ -9,7 +9,8 @@ namespace TrendMarket.Entity
     public class Product
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string m { get; set; }
+        public string Quantity { get; set; }
 
 
         public int UserId { get; set; } // bu prroperty koymamızın sebebi; User olmazsa product olmaz bundan dolayı varolma bağımlılığı user'dadır .Ondan dolayı UserId oluşturduk.
