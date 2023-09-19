@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+ï»¿using Microsoft.EntityFrameworkCore;
 using TrendMarket.Business;
 using TrendMarket.Business.Interfaces;
 using TrendMarket.DataAccess.Context;
@@ -10,9 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<TrendMarketDbContext>(x => x.UseSqlServer(builder.Configuration.GetSection("ConnectionString").Value));
-//Dependency Injection ve IOC konularýný araþtýr
+//Dependency Injection ve IOC konularÃ½nÃ½ araÃ¾tÃ½r
 builder.Services.AddScoped<IUserDataManager, UserDataManager>();
-builder.Services.AddIdentity<User, Role>().AddEntityFrameworkStores<TrendMarketDbContext>(); //EF core ile Identity - Vt baðladýk
+builder.Services.AddIdentity<User, Role>().AddEntityFrameworkStores<TrendMarketDbContext>(); //EF core ile Identity - Vt baÃ°ladÃ½k
 
 var app = builder.Build();
 
@@ -34,6 +34,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Ýntroduction}/{action=Index}");
+    pattern: "{controller=Ä°ntroduction}/{action=Index}/{id?}");
 
 app.Run();
+
+

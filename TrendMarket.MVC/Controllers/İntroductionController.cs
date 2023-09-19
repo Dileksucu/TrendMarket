@@ -14,6 +14,7 @@ namespace TrendMarket.MVC.Controllers
         }
         public IActionResult Index()
         {
+            //ViewBag.message = "dilek sucu ";
             return View();
         }
 

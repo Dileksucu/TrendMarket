@@ -1,0 +1,17 @@
+﻿@addTagHelper* , Micrsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper* , TrendMarket.MVC.Controllers
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model TrendMarket.MVC.Controllers.DataRetrievalController.Model
+
+<form asp-action="ProductAction" asp-controller="DataRetrieval" method="post">
+    <p>Id:<input asp- for="Id" type="text" /></p> <br />
+    <p>Name:<input asp- for="Name" type="text" /></p> <br />
+    <p>Quantity:<input asp- for="Quantity" type="text" /></p> <br />
+    <button>Send</button>
+    @*  burada input oluşturduk, giriş yapabilmek için; inputları nameler ile ayrıyoruz karışmaması için   *@
+</form>

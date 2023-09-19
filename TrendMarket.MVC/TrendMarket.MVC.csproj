@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Products\CreateProduct.cshtml" />
+    <None Remove="Controllers\ixuhzeat.gm4~" />
   </ItemGroup>
 
 

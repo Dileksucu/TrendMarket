@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace TrendMarket.Entity
 {
-    //[HtmlAttributeName("dilek")] --> Bu tag arasına istediğimiz email tag ismi verebiliriz . BUrada verdiğimiz ismi Product.cshtml sayfasında kullandım .
+    //[HtmlAttributeName("dilek")] --> Bu tag arasına istediğimiz email tag ismi verebiliriz .(CreateProduct.cshtml)
     public class EmailTagHelper : TagHelper
     {
         public string Email { get; set; }
         public string? Display { get; set; } // burası view kısmını gösteren kısmında link için yazmak istediğimiz kısım.
+
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
