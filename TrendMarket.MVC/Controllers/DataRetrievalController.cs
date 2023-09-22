@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Identity;
+using Microsoft.AspNetCore.Mvc;
+using TrendMarket.Entity;
+using static TrendMarket.Entity.ModelValidation;
 
 namespace TrendMarket.MVC.Controllers
 {
     public class DataRetrievalController : Controller
     {
-        //Entityler
         public class Model
         {
             public string TxtValue1 { get; set; }
@@ -14,22 +16,22 @@ namespace TrendMarket.MVC.Controllers
 
         public class ModelWithProduct
         {
-            public int Id { get; set; }
             public string Name { get; set; }
             public string Quantity { get; set; }
+            public string Email { get; set; }
         }
 
 
         //form ile veri alma
         [HttpPost]
-        public IActionResult ProductAction( ModelWithProduct Model) 
-        { 
+        public IActionResult ProductAction(ModelWithProduct Model)
+        {
             return View();
         }
 
 
 
-        public class QueryData 
+        public class QueryData
         {
             public string A { get; set; }
             public string B { get; set; }
@@ -64,7 +66,7 @@ namespace TrendMarket.MVC.Controllers
         }
 
         //public IActionResult RouteAction(RouteData data)
-        public IActionResult RouteAction() 
+        public IActionResult RouteAction()
         {
             //Route için
             //var  values = Request.RouteValues; 
@@ -72,8 +74,52 @@ namespace TrendMarket.MVC.Controllers
             //header ile veri alma --> buraya istedği postman üzerinden atıyoruz.
             var header = Request.Headers.ToList();
             return View();
-        
+
         }
+
+
+
+        //[HttpPost]
+        public IActionResult ValidationAction(ModelValidation Models)
+        {
+            // !ModelState.IsValid: doğrulanmadıysa diyoruz 
+
+            if (!ModelState.IsValid)
+            {
+              
+                //ViewBag.message = ModelState.Values.FirstOrDefault(x => x.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid)
+                //    .Errors[0].ErrorMessage;
+                //erorr message alabilirz nu şekilde, şu anda ilk verinin hata mesajını görmek istedik
+
+                var message = ModelState.ToList();
+
+                return View(Models);
+
+            }
+
+            return View();
+
+            //Burada doğru bir şekilde validation yapmıyor!!
+
+
+            //ModelState : MVC de bir type'ın data annotationslarının durumunu kontrol eden ve geriye sonuç dönen propertydir
+            // gelen datalar --> işleme , operasyona, algoritmaya tabi tutulur.
+
+            //View den gönderdiğim post isteği burada karşılanır.
+
+
+            //if (string.IsNullOrEmpty(model.Name)&&)
+            //{
+            //}
+            // Bu şekilde validation yapılmaz , kötü bir şekilde doğrulama yapıldığını gösterir.
+            // Koşul yapılarının ver doğrulamasını sağlayabiliriz ama bu hiç doğru bir yöntem değildir.
+
+
+        }
+
+
+
+
 
 
 
@@ -95,26 +141,26 @@ namespace TrendMarket.MVC.Controllers
         //Nedeni şu ; action methodu default get , biz post işlemi yapıyoruz.
         //Peki bu action neyi sağlar? sadece view sayfasının gelmesini sağlar .
 
-        //[HttpPost] // --> yaptığımızda post işlemi olur.
-        // public ActionResult CreateProduct(string txtProduct, string txtId)
-        //public ActionResult CreateProduct(Product product) 
-        //{ 
-        //    //request işleminde gelen dataların hepsi Action fonksiyonlarda parametrelerden yakalamaktadır.
+        [HttpPost] // --> yaptığımızda post işlemi olur.
+        //public ActionResult CreateProduct(string txtProduct, string txtId)
+        public ActionResult CreateProduct(Product product)
+        {
+            //request işleminde gelen dataların hepsi Action fonksiyonlarda parametrelerden yakalamaktadır.
 
-        //    return View();
-        //// Biz bu action'ın post olduğunu belirttik.Buradaki action post işlmelerini alır .
+            return View();
+            // Biz bu action'ın post olduğunu belirttik.Buradaki action post işlmelerini alır .
 
 
-        //// Bazı durumlar çoklu veriler gelir ; bu durumda verileri model ile karşılaman daha iyi olacaktır.
-        ////Ama şöyle bir durum var , Şu var , propert'lerin hepsini karşılayack bir model oluşturmalı
-        ////aksi takdir de bir tane bile property karşılanmazsa model de V-model oluşturmalı dedi hoca ileri de buna değinicez 
-
-        //}
+            //// Bazı durumlar çoklu veriler gelir ; bu durumda verileri model ile karşılaman daha iyi olacaktır.
+            ////Ama şöyle bir durum var , Şu var , propert'lerin hepsini karşılayack bir model oluşturmalı
+            ////aksi takdir de bir tane bile property karşılanmazsa model de V-model oluşturmalı dedi hoca ileri de buna değinicez 
 
 
 
-        //Bu işlemleri yaptıktan sonra ;  bu verileri kullanıcının gönderdiği verileri ile entitydeki product classını bind edebilmek için 
-        // CreateProduct.cshtml view classında bir using ekliyoruz ve her input'a "asp-for="Property ismini yazıyoruz".
 
+            //Bu işlemleri yaptıktan sonra ;  bu verileri kullanıcının gönderdiği verileri ile entitydeki product classını bind edebilmek için 
+            // CreateProduct.cshtml view classında bir using ekliyoruz ve her input'a "asp-for="Property ismini yazıyoruz".
+
+        }
     }
 }

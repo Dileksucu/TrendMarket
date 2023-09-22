@@ -1,0 +1,31 @@
+﻿@addTagHelper* , Micrsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper* , TrendMarket.MVC.Controllers
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model TrendMarket.Entity.ModelValidation
+
+<div asp-validation-summary="All">
+
+    <!--Bu tagi vie3w içinde kullandığımızda bütün yazdığımız spanları gösterecekktir.-->
+</div>
+
+
+<!-- Burada bir form tasarlıyoruz kullanıcıdan veri almak için -->
+<form asp-action="ValidationAction" asp-controller="DataRetrieval" method="Post">
+    <p>Product Name: <input type="text" asp-for="Name" placeholder=" Name"  /> 
+        <span asp-validation-for="Name"></span></p><br />
+
+    <p>Quantity: <input type="text" asp-for="Quantity" placeholder=" Quantity" />
+        <span asp-validation-for="Quantity"></span> </p> <br />
+
+    <p>E-mail: <input type="text" asp-for="Email" placeholder=" Email" /> 
+        <span asp-validation-for="Email"></span></p> <br />
+
+    <button>SEND</button>
+    
+    <!-- hata mesajlarını gösterecek spanlar oluşturuyoruz her input için -->
+
+</form>
