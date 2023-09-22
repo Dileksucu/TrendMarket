@@ -10,7 +10,7 @@ namespace TrendMarket.Entity
 {
     public class ModelValidation
     {
-            //ANOTAİONS --> Validation için belirlenen kurallar bu şekilde isimlendirilir
+            //Annotaoins --> Validation için belirlenen kurallar bu şekilde isimlendirilir
             // gelen data da bu name alanı gerekli diye bir anotaion belirledik
             // eğer vermezse bu nesnelere cevap errormessage ile , hata mesajı döndürürüz
 
